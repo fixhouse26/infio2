@@ -33,15 +33,15 @@ export default function Home() {
         <Image src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=88" alt="Turquoise tropical beach and clear ocean" fill priority sizes="100vw" />
         <div className="hero-overlay" />
         <div className="hero-content">
-          <span className="eyebrow">PERSONALIZED HOLIDAYS • WORLDWIDE</span>
-          <h1>Your world.<br /><span>Beautifully planned.</span></h1>
-          <p>From sun-soaked islands to unforgettable city escapes, InfiO2 turns your travel wish list into a seamless vacation built around you.</p>
-          <div className="hero-actions"><a className="btn primary" href="/build-my-trip">Build my trip</a><a className="btn glass" href="/visa-assistance">Need visa help?</a></div>
+          <span className="eyebrow">CUSTOM TRAVEL • WORLDWIDE</span>
+          <h1>Infinite destinations.<br /><span>Personalized for you.</span></h1>
+          <p>Custom trips, unforgettable experiences and seamless travel — designed around the way you want to explore.</p>
+          <div className="hero-actions"><a className="btn primary" href="/build-my-trip">Build My Trip →</a><a className="btn glass" href="/travel">Explore Destinations</a></div>
         </div>
         <HeroFinder />
       </section>
 
-      <section className="trust-strip" aria-label="Highlights"><div><b>Tailor-made</b><span>Trips designed around you</span></div><div><b>Worldwide</b><span>Beach, city, cruise & more</span></div><div><b>Human guidance</b><span>Real help before you go</span></div><div><b>One itinerary</b><span>Less searching, more traveling</span></div></section>
+      <section className="trust-strip branded-trust" aria-label="InfiO2 service highlights"><div><b>◎ Worldwide Destinations</b><span>Handpicked experiences</span></div><div><b>▣ Custom Itineraries</b><span>Designed around you</span></div><div><b>✦ Expert Travel Support</b><span>Before, during & after</span></div><div><b>◇ Visa Assistance</b><span>Practical application support</span></div></section>
 
       <section className="section" id="destinations">
         <div className="section-head"><div><span className="eyebrow coral">FIND YOUR NEXT ESCAPE</span><h2>Destinations that feel like a holiday</h2></div><p>Start with the mood, not the map. We’ll shape the flights, stays and experiences around the way you want to travel.</p></div>

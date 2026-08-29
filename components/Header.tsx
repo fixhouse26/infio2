@@ -11,13 +11,13 @@ export default function Header() {
       <Brand />
       <button className="menu-btn" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>☰</button>
       <nav className={`nav${open ? " open" : ""}`} aria-label="Primary navigation" onClick={() => setOpen(false)}>
-        <Link href="/#destinations">Destinations</Link>
-        <Link href="/#travel-styles">Travel Styles</Link>
+        <Link href="/">Home</Link>
         <Link href="/travel">Trips & Packages</Link>
+        <Link href="/#destinations">Destinations</Link>
         <Link href="/visa-assistance">Visa Assistance</Link>
-        <Link href="/about">About</Link>
-        <Link href="/mission">Mission</Link>
-        <Link className="nav-cta" href="/#plan">Plan My Trip</Link>
+        <Link href="/about">About Us</Link>
+        <Link href="/#plan">Contact</Link>
+        <Link className="nav-cta" href="/build-my-trip">Build My Trip</Link>
       </nav>
     </header>
   );

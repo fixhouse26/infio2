@@ -19,14 +19,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   openGraph: {
-    title: "InfiO2 Travel | Infinite Oxygen. Infinite Experiences.",
+    title: "InfiO2 Travel | Infinite Experiences. One Journey.",
     description: "Colorful, personalized holidays, visa assistance, cruises, resorts and custom international itineraries.",
     url: siteUrl,
     siteName: "InfiO2 Travel",
     type: "website",
-    images: [{ url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=85", width: 1600, height: 900, alt: "Tropical holiday beach" }],
+    images: [{ url: "/infio2-logo.png", width: 820, height: 300, alt: "InfiO2 Travel logo" }],
   },
-  twitter: { card: "summary_large_image", title: "InfiO2 Travel", description: "Infinite Oxygen. Infinite Experiences. Holidays and visa assistance, thoughtfully planned.", images: ["https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=85"] },
+  twitter: { card: "summary_large_image", title: "InfiO2 Travel", description: "Infinite Experiences. One Journey. Holidays and visa assistance, thoughtfully planned.", images: ["/infio2-logo.png"] },
 };
 
 const travelAgencySchema = {
@@ -38,7 +38,7 @@ const travelAgencySchema = {
   email: "info@infio2.com",
   description: "Travel agency specializing in custom holidays, cruises, resorts, family vacations, honeymoons, international itineraries and visa application assistance.",
   areaServed: "Worldwide",
-  slogan: "Infinite Oxygen. Infinite Experiences.",
+  slogan: "Infinite Experiences. One Journey.",
   knowsAbout: ["Holiday packages", "Visa application assistance", "International travel requirements", "Cruises", "Resorts", "Family travel", "Honeymoons", "Custom international itineraries"],
 };
 

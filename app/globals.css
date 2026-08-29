@@ -53,3 +53,63 @@
 .longTailLinks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.longTailLinks a{display:flex;flex-direction:column;gap:4px;background:white;border:1px solid var(--line);border-radius:16px;padding:17px;color:var(--ink);transition:.18s}.longTailLinks a:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(8,44,58,.08);border-color:var(--aqua)}.longTailLinks span{font-size:12px;color:var(--muted)}.guideImageHero{min-height:610px}@media(max-width:900px){.longTailLinks{grid-template-columns:1fr 1fr}}@media(max-width:600px){.longTailLinks{grid-template-columns:1fr}}
 
 .hpField{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+
+
+/* ===== InfiO2 approved launch branding: navy + ocean blue + journey orange ===== */
+:root{
+  --ink:#0b2453;
+  --navy:#06255e;
+  --aqua:#0787d5;
+  --sky:#53c7ee;
+  --coral:#f2a20b;
+  --sun:#ffac0b;
+  --cream:#f8fbff;
+  --muted:#5c6f8d;
+  --line:#dce6f3;
+  --shadow:0 18px 50px rgba(6,37,94,.14);
+}
+body{color:var(--ink)}
+.site-header{height:88px;background:rgba(255,255,255,.97);border-bottom:1px solid rgba(6,37,94,.08);padding:0 max(5vw,24px)}
+.brand-image{display:flex;align-items:center;margin-right:auto;width:220px;height:76px;overflow:hidden;letter-spacing:normal}
+.brand-image .brand-logo{width:100%;height:auto;object-fit:contain}
+.brand-image.invert{filter:none;background:white;border-radius:14px;padding:6px 10px}
+.nav{gap:24px;color:#09265e}
+.nav a:hover{color:#0787d5}
+.nav-cta{background:#06255e!important;color:#fff!important;border-radius:9px!important;padding:12px 20px!important;box-shadow:0 8px 18px rgba(6,37,94,.18)}
+.nav-cta:hover{background:#0a3b86!important;color:white!important}
+.hero{min-height:735px}
+.hero-overlay{background:linear-gradient(90deg,rgba(2,30,75,.88) 0%,rgba(2,52,96,.68) 39%,rgba(2,66,117,.16) 73%),linear-gradient(0deg,rgba(2,30,75,.34),transparent 60%)}
+.hero-content{max-width:760px}
+.hero h1{font-size:clamp(50px,6.2vw,92px);letter-spacing:-.052em}
+.hero h1 span{color:#ffad0b}
+.hero p{max-width:625px}
+.btn.primary,.btn.accent{background:#f2a20b;color:white;box-shadow:0 10px 24px rgba(242,162,11,.28)}
+.btn.primary:hover,.btn.accent:hover{background:#dc8d00}
+.btn.glass{background:rgba(4,35,88,.24);border-color:rgba(255,255,255,.68)}
+.search-card{border-radius:18px;border:1px solid rgba(6,37,94,.08);box-shadow:0 22px 60px rgba(6,37,94,.22)}
+.search-card input:focus,.search-card select:focus,.planner-form input:focus,.planner-form select:focus,.planner-form textarea:focus{border-color:#0787d5;box-shadow:0 0 0 3px rgba(7,135,213,.12)}
+.branded-trust{max-width:1280px;margin-top:0;border-radius:0;background:white}
+.branded-trust b{color:#06255e;font-size:14px}
+.branded-trust span{color:#667994}
+.section.alt{background:linear-gradient(180deg,#f4f9ff,#fff)}
+.eyebrow.coral,.ideas-grid span,.ideaCard span,.directoryCard span{color:#e79100}
+.eyebrow.aqua{color:#0787d5}
+.dest-card span,.steps b,.text-link,.footer-grid a:hover{color:#ffad0b}
+.why{background:linear-gradient(135deg,#061d4a,#073d75)}
+.planner{background:linear-gradient(135deg,#0b72bd 0%,#39bde8 56%,#ffad0b 145%)}
+.conversion-band{background:linear-gradient(120deg,#06255e,#087bb9)}
+.simpleHero{background:linear-gradient(135deg,#061d4a,#087bb9)}
+.customizer{background:linear-gradient(180deg,#fff,#f4f9ff)}
+.choice input:checked+span{border-color:#0787d5;background:#eef8ff;box-shadow:0 0 0 2px rgba(7,135,213,.1)}
+.choice input:checked+span:before{background:#0787d5;border-color:#0787d5;box-shadow:inset 0 0 0 4px #eef8ff}
+footer{background:#041a43}
+@media(max-width:900px){
+  .nav{top:88px}
+  .brand-image{width:205px}
+}
+@media(max-width:620px){
+  .site-header{height:74px;padding-left:14px;padding-right:16px}
+  .brand-image{width:175px;height:65px}
+  .nav{top:74px}
+  .hero-content{padding-bottom:330px}
+}

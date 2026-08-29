@@ -4,10 +4,14 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "InfiO2 Travel",
     short_name: "InfiO2",
-    description: "Colorful holidays, thoughtfully planned.",
+    description: "Custom vacations, worldwide travel planning and visa application assistance.",
     start_url: "/",
     display: "standalone",
-    background_color: "#fff9ef",
-    theme_color: "#082c3a",
+    background_color: "#ffffff",
+    theme_color: "#06255e",
+    icons: [
+      { src: "/infio2-icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: "/infio2-icon-512.png", sizes: "512x512", type: "image/png" }
+    ]
   };
 }
