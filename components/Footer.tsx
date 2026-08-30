@@ -10,8 +10,8 @@ export default function Footer() {
         <a className="btn accent" href="/#plan">Plan a trip</a>
       </div>
       <div className="footer-grid">
-        <div><h4>Explore</h4><a href="/#destinations">Destinations</a><a href="/#travel-styles">Travel styles</a><Link href="/travel">Trips & Packages</Link><Link href="/build-my-trip">Build my trip</Link><Link href="/visa-assistance">Visa assistance</Link><a href="/#ideas">Travel ideas</a></div>
-        <div><h4>Company</h4><Link href="/about">About InfiO2</Link><Link href="/mission">Our Mission</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
+        <div><h4>Explore</h4><a href="/#destinations">Destinations</a><Link href="/travel">Trips & Packages</Link><Link href="/build-my-trip">Build my trip</Link><Link href="/visa-assistance">Visa assistance</Link><Link href="/stories">Travel Stories</Link><Link href="/travel-news">Travel Intelligence</Link><Link href="/contribute">Create for InfiO2</Link></div>
+        <div><h4>Company & Legal</h4><Link href="/about">About InfiO2</Link><Link href="/mission">Our Mission</Link><Link href="/editorial-policy">Editorial Policy</Link><Link href="/privacy">Privacy</Link><Link href="/cookie-policy">Cookies</Link><Link href="/terms">Terms</Link><Link href="/travel-disclaimer">Travel & Booking Disclaimer</Link><Link href="/ai-disclaimer">AI Disclaimer</Link><Link href="/visa-disclaimer">Visa Disclaimer</Link><Link href="/content-disclaimer">Content Disclaimer</Link></div>
         <div><h4>Contact</h4><a href="mailto:info@infio2.com">info@infio2.com</a><span>Travel inquiries by appointment</span></div>
       </div>
       <div className="footer-bottom">

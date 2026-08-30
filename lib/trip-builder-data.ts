@@ -63,3 +63,18 @@ export const tripBuilderConfigs: Record<string, TripBuilderConfig> = {
 export function getTripBuilderConfig(slug?: string): TripBuilderConfig {
   return (slug && tripBuilderConfigs[slug]) || defaults;
 }
+
+
+export function getTripBuilderConfigForDestination(destination?: string): TripBuilderConfig {
+  const q=(destination||"").toLowerCase();
+  const map:[string,string][]=[
+    ["italy","italy-vacation-packages"],["rome","italy-vacation-packages"],["florence","italy-vacation-packages"],["venice","italy-vacation-packages"],
+    ["japan","japan-travel-packages"],["tokyo","japan-travel-packages"],["kyoto","japan-travel-packages"],
+    ["dubai","dubai-holiday-packages"],["maldives","maldives-honeymoon-packages"],["hawaii","hawaii-vacation-packages"],
+    ["mexico","mexico-all-inclusive-vacations"],["cancun","mexico-all-inclusive-vacations"],["caribbean","caribbean-vacation-packages"],
+    ["india","india-travel-visa-assistance"],["delhi","india-travel-visa-assistance"],["europe","europe-vacation-packages"],
+    ["paris","europe-vacation-packages"],["london","europe-vacation-packages"],["switzerland","europe-vacation-packages"]
+  ];
+  const slug=map.find(([term])=>q.includes(term))?.[1];
+  return slug ? tripBuilderConfigs[slug] : defaults;
+}

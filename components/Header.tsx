@@ -15,6 +15,8 @@ export default function Header() {
         <Link href="/travel">Trips & Packages</Link>
         <Link href="/#destinations">Destinations</Link>
         <Link href="/visa-assistance">Visa Assistance</Link>
+        <Link href="/stories">Stories</Link>
+        <Link href="/travel-news">Travel Updates</Link>
         <Link href="/about">About Us</Link>
         <Link href="/#plan">Contact</Link>
         <Link className="nav-cta" href="/build-my-trip">Build My Trip</Link>

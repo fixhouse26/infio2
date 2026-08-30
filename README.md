@@ -140,3 +140,89 @@ git push origin main
 ```
 
 Vercel will automatically create a new deployment from the pushed commit.
+
+
+## InfiO2 Smart Itinerary Engine
+
+The Build My Trip flow now has four layers:
+
+1. **InfiO2 travel data library** — destination routing, attractions, hotel ranges, transportation, meals and activity estimates.
+2. **Deterministic itinerary engine** — creates a complete preliminary itinerary even when no OpenAI key is configured.
+3. **Optional OpenAI personalization** — in `hybrid` mode, more customized requests can be refined through the OpenAI Responses API. The default model is `gpt-5.6-luna` to keep token cost low.
+4. **Reusable cache** — matching itinerary fingerprints are reused from memory and, when `KV_REST_API_URL` / `KV_REST_API_TOKEN` are configured, from a persistent REST key-value cache.
+
+The website does not expose `OPENAI_API_KEY` to the browser. All model calls are made from `/api/generate-itinerary`.
+
+### AI cost modes
+
+```text
+AI_ITINERARY_MODE=library
+```
+Never calls OpenAI. The planner uses only the built-in data library and rule engine.
+
+```text
+AI_ITINERARY_MODE=hybrid
+```
+Recommended. Library/rules build every base itinerary; OpenAI is used only for more customized, uncached requests when `OPENAI_API_KEY` exists.
+
+```text
+AI_ITINERARY_MODE=always
+```
+Personalizes every uncached itinerary through OpenAI.
+
+### New launch environment variables
+
+Add these in Vercel → Project → Settings → Environment Variables:
+
+```text
+OPENAI_API_KEY=your_api_key
+OPENAI_ITINERARY_MODEL=gpt-5.6-luna
+AI_ITINERARY_MODE=hybrid
+```
+
+The planner works if `OPENAI_API_KEY` is omitted; it simply stays in zero-AI-cost library mode.
+
+Optional persistent cache:
+
+```text
+KV_REST_API_URL=
+KV_REST_API_TOKEN=
+```
+
+### Customer flow
+
+`Build My Trip → Generate Preliminary Trip → Visual day-by-day itinerary + estimated range → Request My Final Quote → Resend sends complete preferences + generated itinerary to info@infio2.com`
+
+The traveler also receives a confirmation email containing the route, preliminary estimate, and day-by-day itinerary summary.
+
+### Commit this upgrade
+
+```powershell
+cd C:\Users\Gupta\infio2
+npm install
+npm run build
+git add .
+git commit -m "Add InfiO2 smart AI itinerary planner and travel data library"
+git push origin main
+```
+
+
+## Pre-monetization trust + editorial release
+
+This release adds:
+- Travel & Booking/Supplier disclaimer
+- AI/automated itinerary disclaimer
+- Visa & Entry disclaimer
+- Travel Content/News/Creator disclaimer
+- Cookie Policy and expanded Privacy/Terms
+- Contextual trip-builder acknowledgement
+- Travel Stories editorial hub
+- Creator profile and contributor architecture
+- Travel Intelligence with dated source attribution
+- Editorial Policy
+- Article and NewsArticle structured data
+- Sitemap and llms.txt integration
+- No display advertising or affiliate monetization is activated
+
+### Legal launch item
+Website templates are not a substitute for jurisdiction-specific legal advice. Before accepting paid bookings, have the final customer-facing terms, privacy practices, seller-of-travel requirements, cancellation/refund terms, and booking agreement reviewed for the actual legal entity and jurisdictions in which InfiO2 operates.

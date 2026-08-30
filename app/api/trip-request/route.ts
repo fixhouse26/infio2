@@ -5,16 +5,34 @@ function clean(value: unknown) {
   if (typeof value === "boolean") return value ? "Yes" : "No";
   return String(value ?? "");
 }
+function money(n:unknown){ return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(Number(n)||0); }
+
+function itineraryText(value:unknown){
+  if(!value || typeof value!=="object") return "";
+  const it=value as Record<string,unknown>;
+  const est=(it.estimate||{}) as Record<string,unknown>;
+  const days=Array.isArray(it.dayPlans)?it.dayPlans as Array<Record<string,unknown>>:[];
+  return [
+    "",
+    "GENERATED PRELIMINARY ITINERARY",
+    `Title: ${clean(it.title)}`,
+    `Route: ${clean(it.route)}`,
+    `Estimated total: ${money(est.low)}–${money(est.high)}`,
+    ...days.map(d=>`Day ${clean(d.day)} — ${clean(d.city)}: ${clean(d.title)} | Morning: ${clean(d.morning)} | Afternoon: ${clean(d.afternoon)} | Evening: ${clean(d.evening)}`),
+    "",
+    `Planning disclaimer: ${clean(it.disclaimer)}`
+  ].join("\n");
+}
 
 function summary(data: Record<string, unknown>) {
   const rows: [string,string][] = [
     ["Source page", clean(data.sourcePage)],["Name", clean(data.name)],["Email", clean(data.email)],["Phone", clean(data.phone)],
-    ["Destination", clean(data.destination)],["Departure city", clean(data.departureCity)],["Dates", clean(data.dates)],["Date flexibility", clean(data.flexibility)],
+    ["Destination", clean(data.destination)],["Departure city", clean(data.departureCity)],["Dates", clean(data.dates)],["Trip length", clean(data.tripLength)],["Date flexibility", clean(data.flexibility)],
     ["Travelers", clean(data.travelers)],["Places", clean(data.places)],["Other place", clean(data.otherPlace)],["Attractions", clean(data.attractions)],["Hotels", clean(data.hotels)],["Room needs", clean(data.roomNeeds)],["Hotel location", clean(data.hotelLocation)],
     ["Flight cabin", clean(data.flightCabin)],["Flight preference", clean(data.flightPreference)],["Trip pace", clean(data.pace)],["Free time", clean(data.freeTime)],["Meals", clean(data.meals)],
     ["Extras", clean(data.extras)],["Budget", clean(data.budget)],["Visa help", clean(data.visaHelp)],["Notes", clean(data.notes)]
   ];
-  return rows.map(([a,b])=>`${a}: ${b}`).join("\n");
+  return rows.map(([a,b])=>`${a}: ${b}`).join("\n")+itineraryText(data.generatedItinerary);
 }
 
 export async function POST(request: Request) {
@@ -27,40 +45,38 @@ export async function POST(request: Request) {
   const to = process.env.TRAVEL_LEAD_EMAIL || "info@infio2.com";
   const from = process.env.TRAVEL_FROM_EMAIL || "InfiO2 Travel <noreply@infio2.com>";
 
-  if (!apiKey) {
-    return NextResponse.json({ok:false,fallback:"mailto",summary:text},{status:503});
-  }
+  if (!apiKey) return NextResponse.json({ok:false,fallback:"mailto",summary:text},{status:503});
 
   const headers = {"Authorization":`Bearer ${apiKey}`,"Content-Type":"application/json"};
-
-  // 1) Deliver the complete structured lead to InfiO2.
   const response = await fetch("https://api.resend.com/emails",{
-    method:"POST",
-    headers,
+    method:"POST",headers,
     body:JSON.stringify({
-      from, to:[to],
-      reply_to:String(data.email),
-      subject:`InfiO2 custom trip request — ${clean(data.destination) || "New inquiry"} — ${clean(data.name)}`,
+      from,to:[to],reply_to:String(data.email),
+      subject:`InfiO2 final quote request — ${clean(data.destination) || "New inquiry"} — ${clean(data.name)}`,
       text
     })
   });
 
-  if (!response.ok) {
-    return NextResponse.json({ok:false,fallback:"mailto",summary:text},{status:502});
-  }
+  if (!response.ok) return NextResponse.json({ok:false,fallback:"mailto",summary:text},{status:502});
 
-  // 2) Send an automatic acknowledgement to the traveler.
-  // A failure here does not discard a successfully delivered lead.
   try {
+    const it=(data.generatedItinerary||{}) as Record<string,unknown>;
+    const est=(it.estimate||{}) as Record<string,unknown>;
+    const days=Array.isArray(it.dayPlans)?it.dayPlans as Array<Record<string,unknown>>:[];
+    const travelerPlan=days.length?[
+      `\nYour preliminary plan: ${clean(it.title)}`,
+      `Route: ${clean(it.route)}`,
+      `Estimated planning range: ${money(est.low)}–${money(est.high)}`,
+      "",
+      ...days.map(d=>`Day ${clean(d.day)} — ${clean(d.city)}: ${clean(d.title)}`)
+    ].join("\n"):"";
+
     await fetch("https://api.resend.com/emails",{
-      method:"POST",
-      headers,
+      method:"POST",headers,
       body:JSON.stringify({
-        from,
-        to:[String(data.email)],
-        reply_to:to,
-        subject:"We received your InfiO2 trip request",
-        text:`Hi ${clean(data.name)},\n\nThank you for sharing your travel preferences with InfiO2. We received your custom trip request for ${clean(data.destination) || "your upcoming trip"}.\n\nOur team will review the destinations, experiences, hotel level, flight preferences, pace, free-time preferences and other details you selected before responding.\n\nIf you need to add anything, reply to this email or contact info@infio2.com.\n\nInfiO2 Travel\nInfinite Oxygen. Infinite Experiences.\nhttps://www.infio2.com`
+        from,to:[String(data.email)],reply_to:to,
+        subject:"Your InfiO2 preliminary itinerary & quote request",
+        text:`Hi ${clean(data.name)},\n\nThank you for building your trip with InfiO2. We received your preferences and your request for a final quote.${travelerPlan}\n\nOur team will review current airfare, hotel availability, routing, taxes and supplier pricing before preparing your personalized quote.\n\nThis preliminary itinerary is planning guidance only and is not a reservation or guaranteed price.\n\nIf you need to add anything, reply to this email or contact info@infio2.com.\n\nInfiO2 Travel\nInfinite Experiences. One Journey.\nhttps://www.infio2.com`
       })
     });
   } catch {}

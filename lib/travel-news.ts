@@ -1,0 +1,9 @@
+export type TravelUpdate={
+ slug:string;title:string;summary:string;destination:string;category:string;published:string;updated:string;
+ sourceName:string;sourceUrl:string;official:boolean;travelerImpact:string;verified:string;
+};
+export const travelUpdates:TravelUpdate[]=[
+ {slug:"official-sources-before-you-travel",title:"Before You Travel: Verify Entry and Destination Requirements",summary:"Entry, visa, health, customs and destination requirements can change. InfiO2 recommends checking the applicable government authority before departure.",destination:"Worldwide",category:"Travel Advisory",published:"2026-08-30",updated:"2026-08-30",sourceName:"U.S. Department of State — International Travel",sourceUrl:"https://travel.state.gov/content/travel/en/international-travel.html",official:true,travelerImpact:"Use official destination and nationality-specific requirements when preparing travel documents. Do not rely on an old itinerary, social post or AI answer as final authority.",verified:"Editorially reviewed against the linked official source."},
+ {slug:"air-travel-consumer-dashboard",title:"Know Where to Check U.S. Airline Consumer Commitments",summary:"The U.S. Department of Transportation maintains consumer information covering airline commitments and passenger protections.",destination:"United States",category:"Air Travel",published:"2026-08-30",updated:"2026-08-30",sourceName:"U.S. Department of Transportation",sourceUrl:"https://www.transportation.gov/airconsumer",official:true,travelerImpact:"For delays, cancellations, refunds and airline-specific commitments, consult current DOT information and the operating carrier’s terms.",verified:"Editorially reviewed against the linked official source."}
+];
+export const updateBySlug=(slug:string)=>travelUpdates.find(x=>x.slug===slug);
