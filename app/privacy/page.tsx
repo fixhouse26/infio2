@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy & Data Practices",
   description: "Learn how InfiO2 Travel handles information submitted through trip planning, inquiries, analytics and travel-service workflows, plus your privacy choices.",
   alternates: { canonical: "/privacy" },
 };
