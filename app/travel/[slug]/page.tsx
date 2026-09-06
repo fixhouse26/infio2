@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { landingPageMap, landingPages } from "@/lib/landing-pages";
 import TripBuilder from "@/components/TripBuilder";
+import { breadcrumbSchema, clampDescription, compactTitle } from "@/lib/seo";
 
 export function generateStaticParams() {
   return landingPages.map((page) => ({ slug: page.slug }));
@@ -14,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{slug:strin
   const page = landingPageMap[slug];
   if (!page) return {};
   return {
-    title: page.title,
-    description: page.description,
+    title: compactTitle(page.title),
+    description: clampDescription(page.description),
     alternates: { canonical: `/travel/${page.slug}` },
-    openGraph: { title: page.title, description: page.description, images: [page.heroImage], type: "website" },
+    openGraph: { title: `${page.title} | InfiO2`, description: clampDescription(page.description), images: [page.heroImage], type: "website", url: `/travel/${page.slug}` },
   };
 }
 
@@ -25,6 +26,8 @@ export default async function TravelLanding({ params }: { params: Promise<{slug:
   const { slug } = await params;
   const page = landingPageMap[slug];
   if (!page) notFound();
+
+  const breadcrumbs = breadcrumbSchema([{name:"Home",path:"/"},{name:"Travel",path:"/travel"},{name:page.title,path:`/travel/${page.slug}`}]);
 
   const schema = {
     "@context":"https://schema.org",
@@ -40,6 +43,7 @@ export default async function TravelLanding({ params }: { params: Promise<{slug:
 
   return <main>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbs)}} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}} />
     <section className="landingHero">
       <Image src={page.heroImage} alt={page.title} fill priority sizes="100vw" style={{objectFit:"cover"}} />

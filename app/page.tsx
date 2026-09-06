@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import HeroFinder from "@/components/HeroFinder";
 import TripPlanner from "@/components/TripPlanner";
+
+export const metadata: Metadata = {
+  title: { absolute: "Custom Vacations & Trip Planning | InfiO2" },
+  description: "Plan custom vacations, cruises, honeymoons, family trips and international itineraries with InfiO2, plus practical travel visa assistance.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Custom Vacations & Trip Planning | InfiO2",
+    description: "Personalized holidays, cruises, international itineraries and practical travel visa assistance from InfiO2 Travel.",
+    url: "/",
+    type: "website",
+  },
+};
 
 const destinations = [
   { name: "Japan", title: "Culture, food & cherry blossoms", image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1000&q=82", alt: "Japanese temple and cherry blossom travel scene", tall: true },

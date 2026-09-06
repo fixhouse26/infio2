@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import TripBuilder from "@/components/TripBuilder";
 
 export const metadata: Metadata = {
-  title:"AI Trip Planner | Build My Custom InfiO2 Itinerary",
-  description:"Build a personalized preliminary trip itinerary with destinations, attractions, hotel level, flight cabin, free time and estimated planning costs, then request a final InfiO2 quote.",
+  title:"Build My Trip: Smart Itinerary Planner",
+  description:"Build a personalized preliminary itinerary by destination, dates, hotel level, interests and budget, then request a final travel quote from InfiO2.",
   alternates:{canonical:"/build-my-trip"}
 };
 

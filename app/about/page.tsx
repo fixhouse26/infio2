@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About InfiO2 | Infinite Oxygen, Infinite Experiences",
+  title: "About InfiO2 Travel",
   description:
-    "Discover the meaning behind InfiO2 Travel: Infinite Oxygen, Infinite Experiences. We design meaningful travel that creates room to breathe, explore, connect and live more fully.",
+    "Meet InfiO2 Travel and the idea behind Infinite Oxygen: personalized journeys designed for discovery, connection, restoration and memorable experiences.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About InfiO2 | Infinite Oxygen, Infinite Experiences",
+    title: "About InfiO2 Travel",
     description:
       "Learn how InfiO2 connects the idea of oxygen, possibility and meaningful travel to a fuller, richer life.",
     url: "/about",

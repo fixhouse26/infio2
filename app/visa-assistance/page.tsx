@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Visa Application Assistance for International Travel",
+  title: "Travel Visa Application Assistance",
   description:
-    "Get practical visa application assistance for international travel, including document checklists, application guidance, appointment preparation and travel-entry planning from InfiO2 Travel.",
+    "Get practical travel visa application help with published requirements, document checklists, appointment preparation and trip-planning support from InfiO2.",
   alternates: { canonical: "/visa-assistance" },
   openGraph: {
     title: "Visa Application Assistance | InfiO2 Travel",

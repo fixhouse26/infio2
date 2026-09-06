@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Our Mission | Travel for a Fuller Life",
+  title: "Our Mission: Travel for a Fuller Life",
   description:
-    "InfiO2 Travel exists to help people live fuller lives through meaningful travel—creating journeys centered on discovery, connection, restoration and unforgettable experiences.",
+    "Learn how InfiO2 designs meaningful travel around discovery, connection, restoration and memorable experiences instead of rushed, rigid itineraries.",
   alternates: { canonical: "/mission" },
   openGraph: {
     title: "Our Mission | InfiO2 Travel",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Website Terms",
-  description: "Website terms for InfiO2 Travel.",
+  description: "Review InfiO2 website terms covering preliminary itineraries, quotes, bookings, third-party travel suppliers and traveler responsibilities.",
   alternates: { canonical: "/terms" },
 };
 

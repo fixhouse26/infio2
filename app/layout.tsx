@@ -10,14 +10,20 @@ const siteUrl = "https://www.infio2.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "InfiO2 Travel | Holidays, Visa Assistance & Custom Vacations",
-    template: "%s | InfiO2 Travel",
+    default: "Custom Vacations & Trip Planning | InfiO2",
+    template: "%s | InfiO2",
   },
   description:
-    "Plan memorable holidays with InfiO2 Travel. Custom vacations, cruises, resorts, family trips, honeymoons, international itineraries and travel visa application assistance.",
+    "Plan custom vacations, cruises, honeymoons and international trips with InfiO2, plus practical travel visa application assistance.",
   keywords: ["travel agency", "holiday travel", "custom vacations", "international travel", "visa application assistance", "family vacations", "honeymoon planning", "cruise planning"],
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", types: { "application/rss+xml": "/feed.xml" } },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : {}),
+    other: {
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : {}),
+    },
+  },
   openGraph: {
     title: "InfiO2 Travel | Infinite Experiences. One Journey.",
     description: "Colorful, personalized holidays, visa assistance, cruises, resorts and custom international itineraries.",

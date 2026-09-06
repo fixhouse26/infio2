@@ -47,7 +47,7 @@ function outputText(response:Record<string,unknown>) {
 }
 
 function shouldUseAI(data:TripInput) {
-  const mode=(process.env.AI_ITINERARY_MODE || "hybrid").toLowerCase();
+  const mode=(process.env.AI_ITINERARY_MODE || "library").toLowerCase();
   if(mode==="library" || mode==="off") return false;
   if(mode==="always") return true;
   const notes=String(data.notes||"").trim();
